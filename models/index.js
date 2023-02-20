@@ -17,9 +17,6 @@ const sequelize = new Sequelize(connection);
 const db = {};
 db.sequelize = sequelize;
 
-// db.models.users = require("./users")
-// db.models.animals = require("./animals")
-// db.models.adoptions = require("./adoptions")
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
@@ -28,10 +25,7 @@ fs.readdirSync(__dirname)
   })
   .forEach((file) => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize);
-    console.log(model)
     db[model.name] = model;
   });
-
-console.log(db)
 
 module.exports = db;
