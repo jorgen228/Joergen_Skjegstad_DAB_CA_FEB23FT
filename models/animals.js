@@ -3,9 +3,9 @@ module.exports = (sequelize, Sequelize) => {
     "Animal",
     {
       name: Sequelize.DataTypes.STRING,
-      species: Sequelize.DataTypes.STRING,
+      species: Sequelize.DataTypes.INTEGER,
       birthday: Sequelize.DataTypes.DATE,
-      temperament: Sequelize.DataTypes.STRING,
+      temperament: Sequelize.DataTypes.INTEGER,
       size: Sequelize.DataTypes.STRING,
       adopted: Sequelize.DataTypes.BOOLEAN,
     },
@@ -15,6 +15,12 @@ module.exports = (sequelize, Sequelize) => {
   );
   Animal.associate = function (model) {
     Animal.hasOne(model.Adoption);
-  }
+    Animal.hasOne(model.Species, {
+      foreignKey: "id",
+    });
+    Animal.hasOne(model.Temperament, {
+      foreignKey: "id",
+    });
+  };
   return Animal;
 };
