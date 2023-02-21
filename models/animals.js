@@ -3,9 +3,9 @@ module.exports = (sequelize, Sequelize) => {
     "Animal",
     {
       name: Sequelize.DataTypes.STRING,
-      species: Sequelize.DataTypes.INTEGER,
+      species: Sequelize.DataTypes.STRING,
       birthday: Sequelize.DataTypes.DATE,
-      temperament: Sequelize.DataTypes.STRING,
+      temperament: Sequelize.DataTypes.JSON,
       size: Sequelize.DataTypes.STRING,
       adopted: Sequelize.DataTypes.BOOLEAN,
     },

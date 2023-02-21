@@ -5,6 +5,8 @@ const LocalStrategy = require("passport-local");
 const db = require("../models");
 const UserService = require("../services/UserService");
 const userService = new UserService(db);
+const AnimalsService = require("../services/AnimalsService");
+const animalsService = new AnimalsService(db);
 
 passport.use(
   new LocalStrategy(function verify(username, password, cb) {
@@ -70,5 +72,6 @@ router.get("/logout", function (req, res, next) {
 router.get("/signup", function (req, res, next) {
   res.render("signup", { title: "Express", user: req.user });
 });
+
 
 module.exports = router;
