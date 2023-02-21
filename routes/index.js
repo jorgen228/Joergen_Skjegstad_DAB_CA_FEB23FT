@@ -9,7 +9,6 @@ const userService = new UserService(db);
 passport.use(
   new LocalStrategy(function verify(username, password, cb) {
     userService.getOneByName(username).then((user) => {
-      console.log(user);
       if (user === null) {
         return cb(null, false, { message: "Incorrect username or password." });
       }
@@ -53,8 +52,11 @@ router.post("/logout", function (req, res, next) {
 });
 
 router.get("/", function (req, res, next) {
-  console.log(req.user);
-  res.render("index", { title: "Express", user: req.user });
+  admin = null;
+  if (req.user?.Role == "admin") {
+    admin = req.user;
+  }
+  res.render("index", { title: "Express", user: req.user, admin: admin });
 });
 
 router.get("/login", function (req, res, next) {
