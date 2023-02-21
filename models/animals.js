@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
       name: Sequelize.DataTypes.STRING,
       species: Sequelize.DataTypes.INTEGER,
       birthday: Sequelize.DataTypes.DATE,
-      temperament: Sequelize.DataTypes.INTEGER,
+      temperament: Sequelize.DataTypes.STRING,
       size: Sequelize.DataTypes.STRING,
       adopted: Sequelize.DataTypes.BOOLEAN,
     },
@@ -18,9 +18,7 @@ module.exports = (sequelize, Sequelize) => {
     Animal.hasOne(model.Species, {
       foreignKey: "id",
     });
-    Animal.hasOne(model.Temperament, {
-      foreignKey: "id",
-    });
+    Animal.hasMany(model.Temperament);
   };
   return Animal;
 };

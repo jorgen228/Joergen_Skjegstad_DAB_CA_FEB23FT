@@ -12,7 +12,9 @@ class UserService {
     });
   }
   async getAll() {
-    return this.User.findAll();
+    return this.User.findAll({
+      where: {},
+    });
   }
   async getOne(id) {
     return this.User.findOne({

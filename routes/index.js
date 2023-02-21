@@ -51,7 +51,7 @@ router.post("/logout", function (req, res, next) {
   });
 });
 
-router.get("/", function (req, res, next) {
+router.get("/", async function (req, res, next) {
   admin = null;
   if (req.user?.Role == "admin") {
     admin = req.user;
