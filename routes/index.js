@@ -24,7 +24,7 @@ passport.use(
 
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
-    cb(null, { id: user.id, username: user.username });
+    cb(null, { id: user.id, username: user.username, role: user.Role });
   });
 });
 
@@ -43,11 +43,25 @@ router.post(
   })
 );
 
+router.post("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
+
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express", user: req.user});
+  console.log(req.user);
+  res.render("index", { title: "Express", user: req.user });
 });
 
 router.get("/login", function (req, res, next) {
+  res.render("login", { title: "Express", user: req.user });
+});
+
+router.get("/logout", function (req, res, next) {
   res.render("login", { title: "Express", user: req.user });
 });
 

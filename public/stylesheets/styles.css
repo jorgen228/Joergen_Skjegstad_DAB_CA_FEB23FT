@@ -1,5 +1,11 @@
+body{
+  margin: 100px 0 0 0;
+}
+
 .bg-noroff {
   background: #ff7878;
   color: white;
 }
+
+
 
