@@ -29,7 +29,7 @@ values('Coco', 'Dwarf Hamster', '2020-02-12', '[1, 2]', 'small', false),
 ('Toothless', 'Corn Snake', '2017-02-12', '[2]', 'medium', false),
 ('Sophie', 'Dwarf Hamster', '2020-02-12', '[1, 2]', 'small', false),
 ('Teddy', 'Teddy Bear Hamster', '2021-02-12', '[1, 2]', 'small', false),
-('ROger', 'Parrot', '2020-02-18', '[1, 4]', 'large', false);
+('ROger', 'Parrot', '2020-02-18', '[1, 4]', 'large', false);1'  11111
 
 insert into Users(fullname, username, password) 
 values ('System Admin', 'Admin', 'admin1234'), ('User', 'User', 'user1234'), ('User2', 'User', 'User1234');
