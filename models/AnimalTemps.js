@@ -1,3 +1,5 @@
+
+
 module.exports = (sequelize, Sequelize) => {
   const AnimalTemp = sequelize.define(
     "AnimalTemp",
@@ -9,9 +11,9 @@ module.exports = (sequelize, Sequelize) => {
       timestamps: false,
     }
   );
-  AnimalTemp.associate = function (model) {
-    AnimalTemp.belongsTo(model.Animal);
-    AnimalTemp.belongsTo(model.Temperament);
-  };
+  // AnimalTemp.associate = function (model) {
+  //   AnimalTemp.belongsTo(model.Animal);
+  //   AnimalTemp.belongsTo(model.Temperament);
+  // };
   return AnimalTemp;
 };

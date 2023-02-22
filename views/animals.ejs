@@ -31,11 +31,11 @@
         <div class="row px-3 py-1 w-100">
           <span class="col py-1 bg-light"> <%=animal.id%> </span>
           <span class="col py-1 bg-light"> <%=animal.name%> </span>
-          <span class="col py-1 bg-light"> <%=animal.species%> </span>
+          <span class="col py-1 bg-light"> <%=animal.Species.name%> </span>
           <span class="col py-1 bg-light"> <%=animal.birthday%> </span>
           <span class="col py-1 bg-light"> <%=animal.temperament%> </span>
           <span class="col py-1 bg-light"> <%=animal.size%> </span>
-          <span class="col py-1 bg-light"> to calculate from database </span>
+          <span class="col py-1 bg-light"> <%=animal.age%> years old</span>
           <span class="col py-1 bg-light"> <%=animal.adopted%> </span>
           <span class="col py-1 bg-light text-center">
             <% if (user) { %>

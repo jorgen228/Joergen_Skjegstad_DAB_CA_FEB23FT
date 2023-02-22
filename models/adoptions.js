@@ -10,9 +10,9 @@ module.exports = (sequelize, Sequelize) => {
       timestamps: false,
     }
   );
-  Adoption.associate = function (model) {
-    Adoption.belongsTo(model.User);
-    Adoption.belongsTo(model.Animal);
-  };
+  // Adoption.associate = function (model) {
+  //   Adoption.belongsTo(model.User);
+  //   Adoption.belongsTo(model.Animal);
+  // };
   return Adoption;
 };

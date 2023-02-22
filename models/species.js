@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false
   });
   Species.associate = function (model) {
-    Species.belongsTo(model.Animal);
+    Species.hasMany(model.Animal);
   }
   return Species;
 }

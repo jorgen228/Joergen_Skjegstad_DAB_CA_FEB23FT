@@ -3,7 +3,6 @@ module.exports = (sequelize, Sequelize) => {
     "Animal",
     {
       name: Sequelize.DataTypes.STRING,
-      species: Sequelize.DataTypes.STRING,
       birthday: Sequelize.DataTypes.DATE,
       temperament: Sequelize.DataTypes.STRING,
       size: Sequelize.DataTypes.STRING,
@@ -13,14 +12,13 @@ module.exports = (sequelize, Sequelize) => {
       timestamps: false,
     }
   );
+  // Animal.associate = function (model) {
+  //   Animal.hasOne(model.Adoption);
+  //   Animal.hasOne(model.Species);
+  //   Animal.hasMany(model.AnimalTemp);
+  // };
   Animal.associate = function (model) {
-    Animal.hasOne(model.Adoption);
-    Animal.hasOne(model.Species, {
-      foreignKey: "id",
-    });
-    Animal.hasMany(model.AnimalTemp, {
-      foreignKey: "animalId",
-    });
-  };
+    Animal.belongsTo(model.Species);
+  }
   return Animal;
 };
