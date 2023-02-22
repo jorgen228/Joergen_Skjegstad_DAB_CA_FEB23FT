@@ -1,18 +1,16 @@
 var express = require('express');
 var router = express.Router();
+const db = require("../models");
+const SpeciesService = require("../services/SpeciesService");
+const speciesService = new SpeciesService(db);
 
 router.get('/', async function (req, res, next) {
-    species = [
-        {
-            Id: 1,
-            Name: "Tedy bear hamster"
-        },
-        {
-            Id: 2,
-            Name: "Jack-Russel"
-        }
-    ]
-    res.render("species", {user: req.user})
+    admin = null;
+    if (req.user?.role == "admin") {
+      admin = req.user;
+    }
+    const species = await speciesService.getAll();
+    res.render("species", {user: req.user, species: species, admin: admin})
 })
 
 router.post('/update', async function (req,res,next){

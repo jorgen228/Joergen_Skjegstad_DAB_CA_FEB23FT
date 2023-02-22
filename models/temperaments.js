@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
     }
   );
   Temperament.associate = function (model) {
-    Temperament.belongsTo(model.Animal);
+    Temperament.hasMany(model.AnimalTemp);
   };
   return Temperament;
 };
