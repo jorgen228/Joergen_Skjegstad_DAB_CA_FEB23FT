@@ -3,12 +3,9 @@ var router = express.Router();
 const db = require("../models");
 const SpeciesService = require("../services/SpeciesService");
 const speciesService = new SpeciesService(db);
+const { isAdmin } = require("./middleware");
 
-router.get('/', async function (req, res, next) {
-    admin = null;
-    if (req.user?.role == "admin") {
-      admin = req.user;
-    }
+router.get('/', isAdmin, async function (req, res, next) {
     const species = await speciesService.getAll();
     res.render("species", {user: req.user, species: species, admin: admin})
 })

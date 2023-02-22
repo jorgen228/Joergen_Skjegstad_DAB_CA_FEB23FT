@@ -7,6 +7,7 @@ const UserService = require("../services/UserService");
 const userService = new UserService(db);
 const AnimalsService = require("../services/AnimalsService");
 const animalsService = new AnimalsService(db);
+const { isAdmin } = require("./middleware");
 
 passport.use(
   new LocalStrategy(function verify(username, password, cb) {
@@ -53,12 +54,8 @@ router.post("/logout", function (req, res, next) {
   });
 });
 
-router.get("/", async function (req, res, next) {
-  admin = null;
-  if (req.user?.Role == "admin") {
-    admin = req.user;
-  }
-  res.render("index", { title: "Express", user: req.user, admin: admin });
+router.get("/", isAdmin, async function (req, res, next) {
+  res.render("index", { title: "Express", user: req.user, isAdmin });
 });
 
 router.get("/login", function (req, res, next) {

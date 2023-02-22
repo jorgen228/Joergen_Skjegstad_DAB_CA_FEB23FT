@@ -41,14 +41,14 @@
             <% if (user) { %>
             <button
               class="btn-sm btn-warning"
-              onclick="adoptAnimal('<%=animal.Id%>')"
+              onclick="adoptAnimal('<%=animal.id%>')"
             >
               Adopt
             </button>
             <% if (admin) { %>
             <button
               class="btn-sm btn-danger"
-              onclick="deleteAnimal('<%=animal.Id%>')"
+              onclick="deleteAnimal('<%=animal.id%>')"
             >
               Cancel Adoption
             </button>

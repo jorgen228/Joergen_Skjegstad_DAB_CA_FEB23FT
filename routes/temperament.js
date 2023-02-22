@@ -1,15 +1,11 @@
 var express = require("express");
 var router = express.Router();
 const db = require("../models");
-
 const TemperamentsService = require("../services/TemperamentsService");
 const temperamentsService = new TemperamentsService(db);
+const { isAdmin } = require("./middleware");
 
-router.get("/", async function (req, res, next) {
-  admin = null;
-  if (req.user?.role == "admin") {
-    admin = req.user;
-  }
+router.get("/", isAdmin, async function (req, res, next) {
   let temperaments = await temperamentsService.getAll();
   res.render("temperament", {
     user: req.user,

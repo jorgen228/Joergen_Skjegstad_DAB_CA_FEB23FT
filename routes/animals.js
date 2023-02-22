@@ -3,14 +3,11 @@ var router = express.Router();
 const db = require("../models");
 const AnimalsService = require("../services/AnimalsService");
 const animalsService = new AnimalsService(db);
+const { isAdmin } = require("./middleware");
 
-router.get("/", async function (req, res, next) {
+router.get("/", isAdmin, async function (req, res, next) {
   let animals = await animalsService.getAll();
-  admin = null;
-  if (req.user?.role == "admin") {
-    admin = req.user;
-  }
-  res.render("animals", { user: req.user, animals: animals, admin: admin });
+  res.render("animals", { user: req.user, animals: animals, admin: admin});
 });
 
 module.exports = router;
