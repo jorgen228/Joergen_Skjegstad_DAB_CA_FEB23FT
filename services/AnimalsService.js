@@ -45,6 +45,23 @@ class AnimalsService {
       }
     );
   }
+  async getOneBySpecies(id) {
+    return this.Animal.findAll({
+      where: {
+        SpeciesId: id,
+      },
+    });
+  }
+  async getOneByTemperament(id) {
+    return this.Animal.findAll({
+      include: {
+        model: this.Temperament,
+        where: {
+          id: id,
+        },
+      },
+    });
+  }
 }
 
 module.exports = AnimalsService;

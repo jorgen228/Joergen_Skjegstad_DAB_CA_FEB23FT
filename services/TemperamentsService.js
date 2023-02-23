@@ -13,6 +13,25 @@ class TemperamentsService {
       where: {},
     });
   }
+  async updateOne(name, id) {
+    return this.Temperament.update(
+      {
+        name: name,
+      },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+  }
+  async deleteOne(id) {
+    return this.Temperament.destroy({
+      where: {
+        id: id,
+      },
+    });
+  }
 }
 
 module.exports = TemperamentsService;

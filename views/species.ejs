@@ -29,13 +29,13 @@
             <% if (admin) { %>
             <button
               class="btn-sm btn-warning"
-              onclick="updateSpecies( '<%=species.id%>')"
+              onclick="updateSpecies('http:\/\/localhost:3000\/species', '<%=species.id%>')"
             >
               Update species
             </button>
             <button
               class="btn-sm btn-danger"
-              onclick="deleteSpecies( '<%=species.id%>')"
+              onclick="deleteSpecies('http:\/\/localhost:3000\/species', '<%=species.id%>')"
             >
               Delete species
             </button>
@@ -47,13 +47,15 @@
         <div class="row">
           <div class="col-4"></div>
           <div class="col-4 text-center mt-2">
-            <form action="/species/add" method="POST">
               <% if (admin) { %>
-              <button class="btn btn-success" id="btn-add-animal">
+              <button
+                class="btn btn-success"
+                id="btn-add-animal"
+                onclick="addNewSpecies('http:\/\/localhost:3000\/species\/create')"
+              >
                 Add New Species
               </button>
               <% }; %>
-            </form>
           </div>
           <div class="col-4"></div>
         </div>
