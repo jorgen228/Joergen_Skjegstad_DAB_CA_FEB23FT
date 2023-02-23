@@ -2,6 +2,7 @@
 
 # Application Installation and Usage Instructions
 
+
 # Environment Variables
 
 # Additional Libraries/Packages
@@ -9,6 +10,7 @@
 # NodeJS Version Used
 
 # DATABASE
+create database adoptiondb;
 
 # DATAINSERTS
 
@@ -44,5 +46,12 @@ values (1,1), (1,2), (2,1), (2,2), (3,3), (4,1), (4,4), (5,1), (5,5), (6,1), (7,
 (11,2), (12,2), (13,1), (13,4);
 
 # DATABASEACCESS
+create role 'database owner'@'localhost';
+
+CREATE USER 'dabcaowner'@'localhost' IDENTIFIED BY 'dabca1234';
+
+GRANT ALL ON adoptionsdb.* TO 'databse owner';
+
+Grant 'database owner' to 'dabcaowner';
 
 # DATABASEQUERIES
