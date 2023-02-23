@@ -12,13 +12,9 @@ module.exports = (sequelize, Sequelize) => {
       timestamps: false,
     }
   );
-  // Animal.associate = function (model) {
-  //   Animal.hasOne(model.Adoption);
-  //   Animal.hasOne(model.Species);
-  //   Animal.hasMany(model.AnimalTemp);
-  // };
   Animal.associate = function (model) {
     Animal.belongsTo(model.Species);
+    Animal.belongsToMany(model.Temperament, { through: model.AnimalTemp })
   }
   return Animal;
 };

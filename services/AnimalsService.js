@@ -9,16 +9,17 @@ class AnimalsService {
   }
   async getAll() {
     return this.Animal.findAll({
-      where: {},
-    });
-  }
-  async getAll2() {
-    return this.Animal.findAll({
-      include: [{
-        model: this.Species,
-        required: true
-      }],
-      order: ["id"]
+      include: [
+        {
+          model: this.Species,
+          required: true,
+        },
+        {
+          model: this.Temperament,
+          required: true
+        },
+      ],
+      order: ["id"],
     });
   }
 }

@@ -8,8 +8,8 @@ module.exports = (sequelize, Sequelize) => {
       timestamps: false,
     }
   );
-  // Temperament.associate = function (model) {
-  //   Temperament.hasMany(model.AnimalTemp);
-  // };
+  Temperament.associate = function (model) {
+    Temperament.belongsToMany(model.Animal, { through: model.AnimalTemp })
+  };
   return Temperament;
 };

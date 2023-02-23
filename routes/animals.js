@@ -10,9 +10,7 @@ const todaysDate = new Date();
 console.log(todaysDate);
 
 router.get("/", isAdmin, async function (req, res, next) {
-  // const animals = await animalsService.getAll();
-  const animals = await animalsService.getAll2();
-  const species = await speciesService.getAll();
+  const animals = await animalsService.getAll();
   for (let i = 0; i < animals.length; i++) {
     const birthday = new Date(animals[i].birthday);
     const birthdayMont = birthday.getMonth();
@@ -22,11 +20,12 @@ router.get("/", isAdmin, async function (req, res, next) {
       yearsOld--;
     }
     animals[i].age = yearsOld;
+    animals[i].displayTemp = "";
+    animals[i].Temperaments.forEach(temp =>{
+      animals[i].displayTemp += temp.name + ","
+    })
   }
-
-  console.log(animals[0]);
-  console.log(species[0]);
-  // console.log(animals2[0])
+  console.log(animals[0])
   res.render("animals", { user: req.user, animals: animals, admin: admin });
 });
 
