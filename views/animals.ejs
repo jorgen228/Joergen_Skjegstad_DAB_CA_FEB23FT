@@ -38,17 +38,17 @@
           <span class="col py-1 bg-light"> <%=animal.age%> years old</span>
           <span class="col py-1 bg-light"> <%=animal.adopted%> </span>
           <span class="col py-1 bg-light text-center">
-            <% if (user) { %>
+            <% if (user) { %> <% if (!animal.adopted) { %>
             <button
               class="btn-sm btn-warning"
-              onclick="adoptAnimal('<%=animal.id%>')"
+              onclick="adoptAnimal('http:\/\/localhost:3000\/animals','<%=animal.id%>')"
             >
               Adopt
             </button>
-            <% if (admin) { %>
+            <% };%> <% if (admin) { %>
             <button
               class="btn-sm btn-danger"
-              onclick="deleteAnimal('<%=animal.id%>')"
+              onclick="cancelAdoption('http:\/\/localhost:3000\/animals\/cancel','<%=animal.id%>')"
             >
               Cancel Adoption
             </button>

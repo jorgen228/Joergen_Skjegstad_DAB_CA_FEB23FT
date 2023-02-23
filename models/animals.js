@@ -4,7 +4,6 @@ module.exports = (sequelize, Sequelize) => {
     {
       name: Sequelize.DataTypes.STRING,
       birthday: Sequelize.DataTypes.DATE,
-      temperament: Sequelize.DataTypes.STRING,
       size: Sequelize.DataTypes.STRING,
       adopted: Sequelize.DataTypes.BOOLEAN,
     },
@@ -14,7 +13,8 @@ module.exports = (sequelize, Sequelize) => {
   );
   Animal.associate = function (model) {
     Animal.belongsTo(model.Species);
-    Animal.belongsToMany(model.Temperament, { through: model.AnimalTemp })
-  }
+    Animal.belongsToMany(model.Temperament, { through: model.AnimalTemp });
+    Animal.hasOne(model.Adoption);
+  };
   return Animal;
 };

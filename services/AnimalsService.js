@@ -1,4 +1,3 @@
-const { Op, Sequelize } = require("sequelize");
 class AnimalsService {
   constructor(db) {
     this.client = db.sequelize;
@@ -16,11 +15,35 @@ class AnimalsService {
         },
         {
           model: this.Temperament,
-          required: true
+          required: true,
         },
       ],
       order: ["id"],
     });
+  }
+  async adoptOne(id) {
+    return this.Animal.update(
+      {
+        adopted: true,
+      },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+  }
+  async cancelAdoption(id) {
+    return this.Animal.update(
+      {
+        adopted: false,
+      },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
   }
 }
 
