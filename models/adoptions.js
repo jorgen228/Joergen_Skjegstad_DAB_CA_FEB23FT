@@ -1,9 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
   const Adoption = sequelize.define(
     "Adoption",
-    {},
     {
-      timestamps: true,
+      DateOfAdoption: Sequelize.DataTypes.DATE,
+    },
+    {
+      timestamps: false,
     }
   );
   Adoption.associate = function (model) {

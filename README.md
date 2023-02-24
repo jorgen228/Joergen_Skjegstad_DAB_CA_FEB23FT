@@ -95,7 +95,10 @@ join Users on Adoptions.UserId = Users.id;
 
 5: SELECT size, count(size) FROM Animals GROUP by size;
 
-6: Delimiter //
+6: 
+Drop trigger if exists Lizzard_update;
+
+Delimiter //
 Create trigger Lizzard_update before insert on Animals
 for each row
 begin
@@ -103,7 +106,7 @@ declare vlatest_user int;
 set vlatest_user = (Select max(id) from Users);
 if new.SpeciesId = 7
 then set new.adopted = true;
-insert into Adoptions(createdAt, updatedAt, Userid, AnimalId) values (now(), now(), vlatest_user, new.id);
+insert into Adoptions(Userid, AnimalId, DateOfAdoption) values (vlatest_user, new.id, now());
 end if;
 end //
 Delimiter ;

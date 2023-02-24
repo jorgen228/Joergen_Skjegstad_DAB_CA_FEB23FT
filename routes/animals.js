@@ -31,14 +31,24 @@ router.get("/", isAdmin, async function (req, res, next) {
 });
 
 router.post("/", async function (req, res, next) {
-  await animalsService.adoptOne(req.body.id);
-  await adoptionsService.create(req.user.id, req.body.id)
+  const today = new Date();
+  let month = today.getMonth();
+  if (month < 10) {
+    month = "0" + month;
+  }
+  let day = today.getDate();
+  if (day < 10) {
+    day = "0" + day;
+  }
+  const dateOfAdoption = `${today.getFullYear()}-${month}-${day}`;
+  await animalsService.adoptOne(req.body.id, dateOfAdoption);
+  await adoptionsService.create(req.user.id, req.body.id);
   res.end();
 });
 
 router.post("/cancel", async function (req, res, next) {
   await animalsService.cancelAdoption(req.body.id);
-  await adoptionsService.destroyOne(req.body.id)
+  await adoptionsService.destroyOne(req.body.id);
   res.end();
 });
 

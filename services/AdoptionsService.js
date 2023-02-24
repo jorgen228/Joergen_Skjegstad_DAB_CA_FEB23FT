@@ -3,10 +3,11 @@ class AdoptionsService {
     this.client = db.sequelize;
     this.Adoption = db.Adoption;
   }
-  async create(userId, animalId) {
+  async create(userId, animalId, dateOfAdoption) {
     return this.Adoption.create({
       UserId: userId,
       AnimalId: animalId,
+      DateOfAdoption: dateOfAdoption,
     });
   }
   async destroyOne(animalId) {
