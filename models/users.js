@@ -16,6 +16,6 @@ module.exports = (sequelize, Sequelize) => {
   );
   User.associate = function (models) {
     User.hasMany(models.Adoption);
-  }
+  };
   return User;
 };
